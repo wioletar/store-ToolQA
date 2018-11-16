@@ -49,7 +49,7 @@ public class BasketPage extends WebElementManiputator {
 
         for (int i = 0; i < basket.getProductList().size(); i++) {
 
-            assertEquals(basket.getProductList().get(i).getProductName().replaceAll("–", "-"), productName.get(i).getText());
+            assertEquals(basket.getProductList().get(i).getProductName(), productName.get(i).getText().replaceAll("–", "-"));
 
             assertEquals(basket.getProductList().get(i).getPrice(), new BigDecimal(price.get(i).getText().substring(1)));
 
