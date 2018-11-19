@@ -8,14 +8,18 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Properties;
 
 public class WebdriverFactory {
 
-    public WebDriver getDriver() {
+    public WebDriver getDriver() throws MalformedURLException {
         switch (getDriverFromConfig()) {
             case CHROME:
                 return getChromeDriver();
@@ -25,8 +29,17 @@ public class WebdriverFactory {
                 return getIE();
             case EDGE:
                 return getEdge();
+            case GRID:
+                return getGrid();
         }
         return null;
+    }
+
+    private WebDriver getGrid() throws MalformedURLException {
+        DesiredCapabilities cap = DesiredCapabilities.chrome();
+        WebDriver driver = new RemoteWebDriver(new URL("http://192.168.56.1:4445/wd/hub"), cap);
+        System.setProperty("webdriver.edge.driver", "src/main/resources/MicrosoftWebDriver.exe");
+        return driver;
     }
 
     private WebDriver getEdge(){
