@@ -38,7 +38,6 @@ public class WebdriverFactory {
     private WebDriver getGrid() throws MalformedURLException {
         DesiredCapabilities cap = DesiredCapabilities.chrome();
         WebDriver driver = new RemoteWebDriver(new URL("http://192.168.56.1:4445/wd/hub"), cap);
-        System.setProperty("webdriver.edge.driver", "src/main/resources/MicrosoftWebDriver.exe");
         return driver;
     }
 
