@@ -13,12 +13,12 @@ import java.util.Random;
 public abstract class BasePage {
 
    private WebDriver driver;
-   private Actions action;
+   //private Actions action;
    protected Random random;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        action = new Actions(driver);
+      //  action = new Actions(driver);
         random = new Random();
     }
 
@@ -48,6 +48,7 @@ public abstract class BasePage {
         return element;
     }
     public void selectHoverElement(WebElement element) {
+        Actions action= new Actions(driver);
         action.moveToElement(element).build().perform();
     }
 

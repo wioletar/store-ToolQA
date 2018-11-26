@@ -29,10 +29,10 @@ public class BaseTest {
     @BeforeEach
     public void setUp() throws MalformedURLException {
 
-        DesiredCapabilities cap = DesiredCapabilities.chrome();
-        WebDriver driver = new RemoteWebDriver(new URL("http://192.168.56.1:4444/wd/hub"), cap);
+//        DesiredCapabilities cap = DesiredCapabilities.chrome();
+//        WebDriver driver = new RemoteWebDriver(new URL("http://192.168.56.1:4444/wd/hub"), cap);
 
-        //driver = webdriverFactory.getDriver();
+        driver = webdriverFactory.getDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://store.demoqa.com/");
     }
